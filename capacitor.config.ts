@@ -1,8 +1,8 @@
 import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'io.ionic.starter',
-  appName: 'footballTeamRandomizer',
+  appId: 'io.ionic.FTR',
+  appName: 'Football Team Randomizer',
   webDir: 'www',
   server: {
     androidScheme: 'https'

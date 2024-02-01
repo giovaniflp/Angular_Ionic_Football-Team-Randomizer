@@ -10,4 +10,8 @@ export const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full',
   },
+  {
+    path:'randomize',
+    loadComponent: () => import('./randomize-logic/randomize-logic.component').then((m) => m.RandomizeLogicComponent),
+  }
 ];

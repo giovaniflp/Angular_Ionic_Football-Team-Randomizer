@@ -1,0 +1,55 @@
+@defer () {
+  <div class="h-screen text-black bg-white flex flex-col justify-center items-center">
+    <img class="w-8" src="../../assets/dice_svg.svg" alt="">
+    <h1 class="text-xl">Inserir nomes</h1>
+    <p class="text-center">Ao digitar o nome, clique em enviar para adicionar!</p>
+    <div class="flex flex-col gap-2 items-center">
+      <input class="rounded-lg bg-blue-400 text-white border-2 border-black w-60 h-10" placeholder="Insira os nomes" type="text" #nomesImput>
+      <input class="bg-green-500 hover:bg-green-700 duration-500 rounded-lg p-1 w-40 h-10" type="submit" value="Inserir" #submitNomes (click)="addNomesLista(nomesImput.value); nomesImput.value=''">
+    </div>
+    <p class="text-center my-2"><strong>Nomes adicionados: </strong> @for (item of nomes; track $index) {
+      @if ($index === nomes.length - 1){
+        <span>{{item}}.</span>
+      }
+      @else{
+        <span>{{item}}, </span>
+      }
+
+    }
+    </p>
+    <h1>Escolha o tamanho do time</h1>
+    <div class="flex flex-col gap-2">
+      <input class="rounded-lg bg-blue-400 text-white border-2 border-black w-60 h-10" placeholder="Número de pessoas por time" type="number" name="quantidade" id="quantidade" #quantidade>
+      <input class="bg-green-500 hover:bg-green-700 duration-500 rounded-lg p-1 h-10" type="submit" value="Randomizar e calcular times" (click)="resultado(quantidade.valueAsNumber)">
+    </div>
+    <div class="text-center my-2">
+      <h2>Times:</h2>
+      @for (item of resultadoGrupos; track $index) {
+        <ul>
+          <li>Time{{$index+1}} - {{item}} </li>
+        </ul>
+      }
+    </div>
+
+    <!-- <h1>Adicionar quem chegou atrasado: </h1>
+    <input type="text" #atrasadoImput>
+    <input type="submit" value="Inserir" (click)="addAtrasadoTime(atrasadoImput.value)"> -->
+    <a class="bg-red-500 hover:bg-red-700 duration-500 rounded-lg p-2 mt-8 cursor-pointer" href="/home">Voltar / Reiniciar</a>
+    <footer class="text-center">
+      <p>Desenvolvido por <a class="text-blue-500 hover:text-blue-900 duration-500" href="https://www.linkedin.com/in/giovani-feitosa1/" target="_blank">Giovani Feitosa</a></p>
+      <p>Versão 1.0.0 / Não implementado adicionar pessoa atrasada</p>
+    </footer>
+  </div>
+} @loading {
+  <div>
+    Carregando, aguarde...
+  </div>
+} @placeholder {
+  <div>
+    Carregando, aguarde...
+  </div>
+} @error {
+  <div>
+    Erro ao carregar! Tente Novamente.
+  </div>
+}
